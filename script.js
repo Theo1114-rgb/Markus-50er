@@ -85,3 +85,6 @@ async function bilderLaden() {
 
 
 bilderLaden();
+document
+    .querySelector(".login button")
+    .addEventListener("click", anmelden);
