@@ -51,3 +51,37 @@ document
 document
     .querySelector(".upload button")
     .addEventListener("click", hochladen);
+async function bilderLaden() {
+
+    const { data, error } = await supabaseClient.storage
+        .from("bilder")
+        .list();
+
+    if (error) {
+        console.log(error);
+        return;
+    }
+
+    const galerie = document.getElementById("galerie");
+    galerie.innerHTML = "";
+
+    data.forEach(datei => {
+
+        const url = SUPABASE_URL +
+        "/storage/v1/object/public/bilder/" +
+        datei.name;
+
+        galerie.innerHTML += `
+            <div>
+                <img src="${url}" width="100%">
+                <br>
+                <a href="${url}" download>
+                    Bild herunterladen
+                </a>
+            </div>
+        `;
+    });
+}
+
+
+bilderLaden();
