@@ -1,13 +1,8 @@
-const code = "MARKUS50";
+const SUPABASE_URL = "https://tfrsrsvhderijmrybzmj.supabase.co";
 
-function anmelden() {
-    const eingabe = document.getElementById("code").value;
+const SUPABASE_KEY = "sb_publishable_AxdZ0eVKp6Nu6K8vAXrhMA_fTItm2jI";
 
-    if (eingabe === code) {
-        alert("Willkommen bei Markus 50er!");
-    } else {
-        alert("Falscher Einladungscode!");
-    }
-}
-
-document.querySelector(".login button").addEventListener("click", anmelden);
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
